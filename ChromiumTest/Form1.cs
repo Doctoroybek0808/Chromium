@@ -33,7 +33,7 @@ namespace ChromiumTest
                 browser = new ChromiumWebBrowser("file:///" + Environment.CurrentDirectory + "//factura-send.html");
                  
                 browser.JavascriptObjectRepository.NameConverter = null;
-
+                Console.WriteLine("TEst");
                 browser.JavascriptObjectRepository.Register("FsDLL", fsDLL, isAsync: false, options: new BindingOptions());
                 fsDLL.DataReady += WebServer.FsDLL_DataReady;
                 browser.IsBrowserInitializedChanged += Browser_IsBrowserInitializedChanged;
