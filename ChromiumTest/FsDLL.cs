@@ -12,7 +12,7 @@ namespace ChromiumTest
 
         public void dofunc(string data)
         {
-           // Console.WriteLine(data);
+            Console.WriteLine(data);
             DataReady?.Invoke(this, data);
         }
     }
