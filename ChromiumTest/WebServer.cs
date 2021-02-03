@@ -201,11 +201,13 @@ namespace ChromiumTest
         }
         private static void WriteToFile2(string text)
         {
+            Console.WriteLine("Test");
             string path = Environment.CurrentDirectory + "\\query.txt";
             using (StreamWriter writer = new StreamWriter(path, true))
             {
                 writer.WriteLine(text);
                 writer.Close();
+                
             }
         }
         private static void WriteToFileError(string text)
