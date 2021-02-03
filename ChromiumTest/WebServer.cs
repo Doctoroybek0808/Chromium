@@ -147,6 +147,74 @@ namespace ChromiumTest
                                         //context.Response.StatusCode = 200;
                                         //Perform(context, "{\"status\":200,\"message\":\"" + res + "\"}");
                                     }
+                                    else if (content == "cert")
+                                    {
+                                        var frame = Form1.browser.GetMainFrame();
+
+                                        string text;
+                                        using (var reader = new StreamReader(request.InputStream,
+                                                                             request.ContentEncoding))
+                                        {
+                                            text = reader.ReadToEnd();
+                                        }
+                                        text = text.Replace("\n", "").Replace("\r", "");
+                                        //var json = JsonConvert.SerializeObject(text, new JsonSerializerSettings { Formatting = Formatting.None }); ;
+
+                                        string script = @"window.getCert((data)  => FsDLL.dofunc(data));";
+                                        Console.WriteLine(text);
+                                        Task<JavascriptResponse> t = Form1.browser.EvaluateScriptAsPromiseAsync(script);
+                                        t.Wait();
+                                        state = "start";
+
+                                        //context.Response.StatusCode = 200;
+                                        //Perform(context, "{\"status\":200,\"message\":\"" + res + "\"}");
+                                    }
+
+                                    else if (content == "attach")
+                                    {
+                                        var frame = Form1.browser.GetMainFrame();
+
+                                        string text;
+                                        using (var reader = new StreamReader(request.InputStream,
+                                                                             request.ContentEncoding))
+                                        {
+                                            text = reader.ReadToEnd();
+                                        }
+                                        text = text.Replace("\n", "").Replace("\r", "");
+                                        //var json = JsonConvert.SerializeObject(text, new JsonSerializerSettings { Formatting = Formatting.None }); ;
+
+                                        string script = @"window.signAttach((data, json)  => FsDLL.dofunc(data), " + text + ");";
+                                        Console.WriteLine(text);
+                                        Task<JavascriptResponse> t = Form1.browser.EvaluateScriptAsPromiseAsync(script);
+                                        t.Wait();
+                                        state = "start";
+
+                                        //context.Response.StatusCode = 200;
+                                        //Perform(context, "{\"status\":200,\"message\":\"" + res + "\"}");
+                                    }
+
+                                    else if (content == "decode")
+                                    {
+                                        var frame = Form1.browser.GetMainFrame();
+
+                                        string text;
+                                        using (var reader = new StreamReader(request.InputStream,
+                                                                             request.ContentEncoding))
+                                        {
+                                            text = reader.ReadToEnd();
+                                        }
+                                        text = text.Replace("\n", "").Replace("\r", "");
+                                        //var json = JsonConvert.SerializeObject(text, new JsonSerializerSettings { Formatting = Formatting.None }); ;
+
+                                        string script = @"window.signDecode((data, json)  => FsDLL.dofunc(data), " + text + ");";
+                                        Console.WriteLine(text);
+                                        Task<JavascriptResponse> t = Form1.browser.EvaluateScriptAsPromiseAsync(script);
+                                        t.Wait();
+                                        state = "start";
+
+                                        //context.Response.StatusCode = 200;
+                                        //Perform(context, "{\"status\":200,\"message\":\"" + res + "\"}");
+                                    }
 
                                     //else
                                     //{
@@ -206,7 +274,6 @@ namespace ChromiumTest
             {
                 writer.WriteLine(text);
                 writer.Close();
-                
             }
         }
         private static void WriteToFileError(string text)
