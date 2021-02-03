@@ -139,7 +139,7 @@ namespace ChromiumTest
                                         //var json = JsonConvert.SerializeObject(text, new JsonSerializerSettings { Formatting = Formatting.None }); ;
 
                                         string script = @"window.sign((data, json)  => FsDLL.dofunc(data), "+text+");";
-                                        Console.WriteLine(text);
+                                       // Console.WriteLine(text);
                                         Task<JavascriptResponse> t = Form1.browser.EvaluateScriptAsPromiseAsync(script);
                                         t.Wait();
                                         state = "start";
@@ -161,7 +161,7 @@ namespace ChromiumTest
                                         //var json = JsonConvert.SerializeObject(text, new JsonSerializerSettings { Formatting = Formatting.None }); ;
 
                                         string script = @"window.getCert((data)  => FsDLL.dofunc(data));";
-                                        Console.WriteLine(text);
+                                       // Console.WriteLine(text);
                                         Task<JavascriptResponse> t = Form1.browser.EvaluateScriptAsPromiseAsync(script);
                                         t.Wait();
                                         state = "start";
@@ -184,7 +184,7 @@ namespace ChromiumTest
                                         //var json = JsonConvert.SerializeObject(text, new JsonSerializerSettings { Formatting = Formatting.None }); ;
 
                                         string script = @"window.signAttach((data, json)  => FsDLL.dofunc(data), " + text + ");";
-                                        Console.WriteLine(text);
+                                       // Console.WriteLine(text);
                                         Task<JavascriptResponse> t = Form1.browser.EvaluateScriptAsPromiseAsync(script);
                                         t.Wait();
                                         state = "start";
@@ -207,7 +207,7 @@ namespace ChromiumTest
                                         //var json = JsonConvert.SerializeObject(text, new JsonSerializerSettings { Formatting = Formatting.None }); ;
 
                                         string script = @"window.signDecode((data, json)  => FsDLL.dofunc(data), " + text + ");";
-                                        Console.WriteLine(text);
+                                        //Console.WriteLine(text);
                                         Task<JavascriptResponse> t = Form1.browser.EvaluateScriptAsPromiseAsync(script);
                                         t.Wait();
                                         state = "start";
